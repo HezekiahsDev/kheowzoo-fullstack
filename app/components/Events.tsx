@@ -46,14 +46,14 @@ const data: TabData = {
       id: 2,
       title: "Tech Fest 2024",
       description: "Discover emerging trends and network with top innovators.",
-      image: "/WebGallery/photos/img3.jpg",
+      image: "/WebGallery/photos/img18.jpg",
       link: "/rsvp/tech-fest-2024",
     },
     {
       id: 3,
       title: "Blockchain Expo",
       description: "Celebrating the achievements of our tech community.",
-      image: "/WebGallery/photos/img3.jpg",
+      image: "/WebGallery/photos/img15.jpg",
       link: "/news/community-highlights",
     },
   ],
@@ -62,40 +62,40 @@ const data: TabData = {
       id: 1,
       title: "Tech Industry Insights",
       description: "Explore the latest news in the tech world.",
-      image: "/WebGallery/photos/img3.jpg",
+      image: "/WebGallery/photos/img11.jpg",
       link: "/news/tech-insights",
     },
     {
       id: 2,
       title: "Community Highlights",
       description: "Celebrating the achievements of our tech community.",
-      image: "/WebGallery/photos/img3.jpg",
+      image: "/WebGallery/photos/img24.jpg",
       link: "/news/community-highlights",
     },
     {
       id: 3,
       title: "Community Highlights",
       description: "Celebrating the achievements of our tech community.",
-      image: "/WebGallery/photos/img3.jpg",
+      image: "/WebGallery/photos/img43.jpg",
       link: "/news/community-highlights",
     },
   ],
   analytics: [
     {
       id: 1,
-      title: "Token Price Chart 1",
+      title: "Coin Gecko",
       description: "Live updates from Coin Gecko.",
       link: "https://www.geckoterminal.com/solana/pools/5tCgQ8g9t7YxupJMmQBYTdXq6fJ8KbwFMrvAhfb9thG?utm_source=coingecko&utm_medium=referral&utm_campaign=searchresults",
     },
     {
       id: 2,
-      title: "Token Price Chart 2",
+      title: "Dex Screener",
       description: "Live updates from Dex Screener.",
       link: "https://dexscreener.com/solana/5tCgQ8g9t7YxupJMmQBYTdXq6fJ8KbwFMrvAhfb9thG",
     },
     {
       id: 3,
-      title: "Token Price Chart 3",
+      title: "Dex Tool",
       description: "Live updates from Dex Tool.",
       link: "https://www.dextools.io/app/en/solana/pair-explorer/5tCgQ8g9t7YxupJMmQBYTdXq6fJ8KbwFMrvAhfb9thG",
     },
@@ -169,7 +169,7 @@ export default function EventsAndNews() {
             href={`/${activeTab}`}
             className="text-green-400 hover:underline"
           >
-            View More
+            View Analytics
           </Link>
         </div>
       </div>

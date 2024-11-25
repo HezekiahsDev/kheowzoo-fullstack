@@ -78,7 +78,7 @@ export default function Gallery() {
               >
                 <div className="relative">
                   <Image
-                    src={`/WebGallery/photos/${image}`} // Adjust path as needed
+                    src={`/WebGallery/photos/${image}`}
                     alt={`Gallery Image ${index + 1}`}
                     width={400}
                     height={300}
