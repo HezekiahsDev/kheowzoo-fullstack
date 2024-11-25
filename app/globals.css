@@ -1,0 +1,36 @@
+/* Global Tailwind setup */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #121212; /* Background color */
+  --color-text: #e0e0e0; /* Text color */
+  --color-primary: #4caf50; /* Primary green */
+  --color-secondary: #8d6e63; /* Secondary brown */
+  --color-accent: #bb86fc; /* Accent color */
+}
+
+body {
+  @apply bg-color-bg text-color-text font-sans m-0 p-0 box-border;
+}
+
+.bg-color-bg {
+  @apply bg-[var(--color-bg)];
+}
+
+.text-color-text {
+  @apply text-[var(--color-text)];
+}
+
+.text-color-primary {
+  @apply text-[var(--color-primary)];
+}
+
+.bg-color-primary {
+  @apply bg-[var(--color-primary)];
+}
+
+.hero-section {
+  @apply bg-cover bg-center h-screen flex flex-col justify-center items-center relative;
+}
