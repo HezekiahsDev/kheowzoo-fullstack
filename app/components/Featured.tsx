@@ -126,9 +126,9 @@ export default function Featured() {
                     href={`https://twitter.com/kheowzoo_CTO/status/${tweet.id}`}
                     passHref
                   >
-                    <button className="bg-color-primary text-white py-2 px-4 rounded-md hover:bg-opacity-80 transition-all">
+                    <motion.a className="bg-color-primary text-white py-2 px-4 rounded-md hover:bg-opacity-80 transition-all">
                       View on Twitter
-                    </button>
+                    </motion.a>
                   </Link>
                 </div>
               ))}
@@ -150,9 +150,9 @@ export default function Featured() {
                     {post.title}
                   </h3>
                   <Link href={post.link} passHref>
-                    <button className="bg-color-primary text-white py-2 px-4 rounded-md hover:bg-opacity-80 transition-all">
+                    <motion.a className="bg-color-primary text-white py-2 px-4 rounded-md hover:bg-opacity-80 transition-all">
                       Read More
-                    </button>
+                    </motion.a>
                   </Link>
                 </div>
               ))}
@@ -189,38 +189,33 @@ export default function Featured() {
           {/* Tab-Specific Links */}
           <div className="mt-8 flex justify-center">
             {activeTab === "tweets" && (
-              <Link
-                href="https://twitter.com/kheowzoo_CTO"
-                target="_blank"
-                passHref
-              >
+              <Link href="https://twitter.com/kheowzoo_CTO" passHref>
                 <motion.a
                   whileHover={{ textDecoration: "underline" }}
                   className="text-color-primary font-semibold text-lg transition-all cursor-pointer"
+                  target="_blank"
                 >
                   Visit our Twitter page
                 </motion.a>
               </Link>
             )}
             {activeTab === "blog" && (
-              <Link href="/blog" target="_blank" passHref>
+              <Link href="/blog" passHref>
                 <motion.a
                   whileHover={{ textDecoration: "underline" }}
                   className="text-color-primary font-semibold text-lg transition-all cursor-pointer"
+                  target="_blank"
                 >
                   Visit our Blog
                 </motion.a>
               </Link>
             )}
             {activeTab === "watch" && (
-              <Link
-                href="https://youtube.com/channel/your_channel"
-                target="_blank"
-                passHref
-              >
+              <Link href="https://youtube.com/channel/your_channel" passHref>
                 <motion.a
                   whileHover={{ textDecoration: "underline" }}
                   className="text-color-primary font-semibold text-lg transition-all cursor-pointer"
+                  target="_blank"
                 >
                   Visit our YouTube Channel
                 </motion.a>

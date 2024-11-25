@@ -132,59 +132,41 @@ export default function EventsAndNews() {
 
         {/* Tab Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data[activeTab].map((item, index) =>
-            activeTab !== "analytics" ? (
-              <div
-                key={index}
-                className="bg-[#964B00] shadow-lg rounded-lg overflow-hidden border border-gray-200"
-              >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={400}
-                  height={300}
-                  className="w-full h-52 object-cover rounded-t-lg"
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm text-gray-200">
-                    {item.description}
-                  </p>
-                  <div className="mt-4 text-center">
-                    <Link href={item.link} passHref>
-                      <button className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-400 transition-all">
-                        {activeTab === "events" ? "RSVP" : "Read More"}
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div
-                key={index}
-                className="bg-[#964B00] shadow-lg rounded-lg overflow-hidden border border-gray-200 p-4 text-center"
-              >
+          {data[activeTab].slice(0, 3).map((item, index) => (
+            <div
+              key={index}
+              className="bg-[#964B00] shadow-lg rounded-lg overflow-hidden border border-gray-200 transform transition-all hover:scale-105"
+            >
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={400}
+                height={300}
+                className="w-full h-52 object-cover rounded-t-lg"
+              />
+              <div className="p-4">
                 <h3 className="text-xl font-bold text-white">{item.title}</h3>
                 <p className="mt-2 text-sm text-gray-200">{item.description}</p>
-                <iframe
-                  src={item.link}
-                  className="w-full h-52 mt-4 border border-gray-300"
-                  title={item.title}
-                  loading="lazy"
-                ></iframe>
-                {/* Additional link below the card */}
                 <div className="mt-4 text-center">
-                  <Link
-                    href={item.link}
-                    target="_blank"
-                    className="text-green-400 hover:underline"
-                  >
-                    View
+                  <Link href={item.link} passHref>
+                    <button className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-400 transition-all">
+                      {activeTab === "events" ? "RSVP" : "Read More"}
+                    </button>
                   </Link>
                 </div>
               </div>
-            )
-          )}
+            </div>
+          ))}
+        </div>
+
+        {/* "View More" Link */}
+        <div className="mt-6 text-center">
+          <Link
+            href={`/${activeTab}`}
+            className="text-green-400 hover:underline"
+          >
+            View More
+          </Link>
         </div>
       </div>
     </section>
