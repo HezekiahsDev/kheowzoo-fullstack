@@ -2,13 +2,12 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-//import { useInView } from "react-intersection-observer"; // For detecting visibility
 import { motion } from "framer-motion"; // For animations
 
 const videoPreviews = [
-  { src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-  { src: "https://www.w3schools.com/html/movie.mp4" },
-  { src: "https://www.w3schools.com/html/mov_bbb.mp4" },
+  { src: "/WebGallery/videos/vid1.mp4" }, // Replace with actual video filenames
+  { src: "/WebGallery/videos/vid2.mp4" },
+  { src: "/WebGallery/videos/vid1.mp4" },
 ];
 
 export default function Gallery() {
@@ -50,21 +49,22 @@ export default function Gallery() {
         {/* Tab Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {activeTab === "videos" &&
-            videoPreviews.slice(0, 3).map((video, index) => (
+            videoPreviews.map((video, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="relative aspect-w-16 aspect-h-9"
               >
-                <video
-                  src={video.src}
-                  className="w-full h-full object-cover rounded-lg"
-                  muted
-                  loop
-                  autoPlay
-                />
+                <div className="relative w-full h-[260px] overflow-hidden rounded-lg">
+                  <video
+                    src={video.src}
+                    className="w-full h-full object-fill" // Use object-fill for full-size display
+                    muted
+                    loop
+                    autoPlay
+                  />
+                </div>
               </motion.div>
             ))}
 
