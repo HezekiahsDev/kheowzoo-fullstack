@@ -44,9 +44,18 @@ const blogPosts: BlogPost[] = [
 ];
 
 const videoLinks = [
-  "https://www.youtube.com/embed/owZx70FfmSo?autoplay=1",
-  "https://www.youtube.com/embed/4Z9b_v8sUPI",
-  "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  {
+    url: "https://www.youtube.com/embed/owZx70FfmSo?autoplay=1",
+    description: "Kheowzoo - The best coin in 2024💫",
+  },
+  {
+    url: "https://www.youtube.com/embed/4Z9b_v8sUPI",
+    description: "Learn how technology is reshaping conservation efforts.",
+  },
+  {
+    url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    description: "Rick Astley - Never Gonna Give You Up (Official Music Video)",
+  },
 ];
 
 export default function Featured() {
@@ -169,7 +178,7 @@ export default function Featured() {
                 >
                   <div className="aspect-w-16 aspect-h-9 mb-4">
                     <iframe
-                      src={video + (index === 0 ? "&autoplay=1" : "")}
+                      src={video.url + (index === 0 ? "&autoplay=1" : "")}
                       title={`YouTube Video ${index + 1}`}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
@@ -178,7 +187,7 @@ export default function Featured() {
                   </div>
 
                   <h3 className="text-lg font-bold text-white mb-2">
-                    Watch Conservation in Action #{index + 1}
+                    {video.description}
                   </h3>
                 </div>
               ))}
