@@ -47,7 +47,7 @@ export default function Header() {
         <div className="flex items-center">
           <Link href="/">
             <Image
-              src="/Logo.png" // Path to your image in the public folder
+              src="/logo.png" // Path to your image in the public folder
               alt="Kheowzoo Logo"
               width={40} // Adjust the width as needed
               height={40} // Adjust the height as needed
