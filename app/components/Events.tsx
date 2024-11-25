@@ -23,6 +23,7 @@ type AnalyticsItem = {
   id: number;
   title: string;
   description: string;
+  link: string;
 };
 
 type TabData = {
@@ -83,16 +84,19 @@ const data: TabData = {
       id: 1,
       title: "Token Price Chart 1",
       description: "Live updates from Coin Gecko.",
+      link: "https://www.geckoterminal.com/solana/pools/5tCgQ8g9t7YxupJMmQBYTdXq6fJ8KbwFMrvAhfb9thG?utm_source=coingecko&utm_medium=referral&utm_campaign=searchresults",
     },
     {
       id: 2,
       title: "Token Price Chart 2",
       description: "Live updates from Dex Screener.",
+      link: "https://dexscreener.com/solana/5tCgQ8g9t7YxupJMmQBYTdXq6fJ8KbwFMrvAhfb9thG",
     },
     {
       id: 3,
       title: "Token Price Chart 3",
       description: "Live updates from Dex Tool.",
+      link: "https://www.dextools.io/app/en/solana/pair-explorer/5tCgQ8g9t7YxupJMmQBYTdXq6fJ8KbwFMrvAhfb9thG",
     },
   ],
 };
@@ -105,7 +109,7 @@ export default function EventsAndNews() {
   return (
     <section className="py-8 bg-black" id="events">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-8 text-white">
+        <h2 className="text-3xl font-bold text-center mb-8 text-green-500">
           News & Events
         </h2>
 
@@ -114,7 +118,9 @@ export default function EventsAndNews() {
           {["news", "events", "analytics"].map((tab) => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab as "news" | "events" | "analytics")}
+              onClick={() =>
+                setActiveTab(tab as "news" | "events" | "analytics")
+              }
               className={`px-6 py-2 font-semibold text-lg capitalize ${
                 activeTab === tab ? "text-green-500" : "text-gray-400"
               } hover:text-green-400 transition`}
@@ -141,7 +147,9 @@ export default function EventsAndNews() {
                 />
                 <div className="p-4">
                   <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm text-gray-200">{item.description}</p>
+                  <p className="mt-2 text-sm text-gray-200">
+                    {item.description}
+                  </p>
                   <div className="mt-4 text-center">
                     <Link href={item.link} passHref>
                       <button className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-400 transition-all">
@@ -158,19 +166,25 @@ export default function EventsAndNews() {
               >
                 <h3 className="text-xl font-bold text-white">{item.title}</h3>
                 <p className="mt-2 text-sm text-gray-200">{item.description}</p>
+                <iframe
+                  src={item.link}
+                  className="w-full h-52 mt-4 border border-gray-300"
+                  title={item.title}
+                  loading="lazy"
+                ></iframe>
+                {/* Additional link below the card */}
+                <div className="mt-4 text-center">
+                  <Link
+                    href={item.link}
+                    target="_blank"
+                    className="text-green-400 hover:underline"
+                  >
+                    View
+                  </Link>
+                </div>
               </div>
             )
           )}
-        </div>
-
-        {/* Action Button */}
-        <div className="flex justify-center mt-8">
-          <Link
-            href="#more-events"
-            className="inline-block bg-green-500 text-white py-3 px-8 rounded-lg text-lg hover:bg-green-400 transition"
-          >
-            Explore More Events
-          </Link>
         </div>
       </div>
     </section>

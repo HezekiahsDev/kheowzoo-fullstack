@@ -35,12 +35,12 @@ export default function Hero() {
         </a> */}
       </div>
 
-      <div className="z-10 px-4 max-w-4xl  text-center mt-8">
+      <div className="z-10 mx-4 px-4 max-w-4xl  text-center mt-8">
         <h2 className="text-lg md:text-xl font-bold text-color-primary animate__animated animate__fadeIn animate__delay-3s">
           Contract Address
         </h2>
         <p
-          className="text-base md:text-lg  text-blue-500 underline cursor-pointer mt-2 animate__animated animate__fadeIn animate__delay-3s"
+          className="text-base md:text-base px-4 text-blue-500 underline cursor-pointer mt-2 animate__animated animate__fadeIn animate__delay-3s"
           onClick={copyToClipboard}
         >
           {contractAddress}
