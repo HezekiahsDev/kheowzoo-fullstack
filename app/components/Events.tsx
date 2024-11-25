@@ -24,6 +24,7 @@ type AnalyticsItem = {
   title: string;
   description: string;
   link: string;
+  image?: string; // Make the image field optional for AnalyticsItem
 };
 
 type TabData = {
@@ -137,13 +138,16 @@ export default function EventsAndNews() {
               key={index}
               className="bg-[#964B00] shadow-lg rounded-lg overflow-hidden border border-gray-200 transform transition-all hover:scale-105"
             >
-              <Image
-                src={item.image}
-                alt={item.title}
-                width={400}
-                height={300}
-                className="w-full h-52 object-cover rounded-t-lg"
-              />
+              {/* Conditionally render Image for events and news only */}
+              {activeTab !== "analytics" && item.image && (
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={400}
+                  height={300}
+                  className="w-full h-52 object-cover rounded-t-lg"
+                />
+              )}
               <div className="p-4">
                 <h3 className="text-xl font-bold text-white">{item.title}</h3>
                 <p className="mt-2 text-sm text-gray-200">{item.description}</p>
