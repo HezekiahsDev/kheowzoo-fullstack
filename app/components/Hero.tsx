@@ -34,7 +34,7 @@ export default function Hero() {
           Contract Address
         </h2>
         <p
-          className="text-base md:text-base px-4 text-blue-500 underline cursor-pointer mt-2 animate__animated animate__fadeIn animate__delay-3s"
+          className="text-base md:text-base px-4 text-white underline cursor-pointer mt-2 animate__animated animate__fadeIn animate__delay-3s"
           onClick={copyToClipboard}
         >
           {contractAddress}
@@ -43,7 +43,7 @@ export default function Hero() {
           href={`https://solscan.io/token/${contractAddress}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="block mt-4 text-blue-500 underline animate__animated animate__fadeIn animate__delay-3s"
+          className="block mt-4 text-green-500 text-lg underline animate__animated animate__fadeIn animate__delay-3s"
         >
           View on Solscan
         </a>
