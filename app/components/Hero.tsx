@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import "animate.css";
 
 export default function Hero() {
@@ -13,7 +14,7 @@ export default function Hero() {
 
   return (
     <div
-      className="hero-section bg-cover bg-center text-white flex flex-col justify-center items-center h-[100vh] md:h-[100vh] relative"
+      className="hero-section bg-cover bg-center text-white flex flex-col justify-center items-center h-[100vh] relative w-full"
       style={{ backgroundImage: `url('/bg-banner.jpg')` }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
@@ -32,7 +33,7 @@ export default function Hero() {
           Welcome to Kheowzoo
         </h1>
 
-        <p className="text-lg md:text-xl mb-6 animate__animated animate__fadeIn animate__delay-2s">
+        <p className="text-lg md:text-xl mb-2 animate__animated animate__fadeIn animate__delay-2s">
           Explore the cutting edge of blockchain-powered conservation. Join a
           community redefining the future of wildlife and Web3 technology.
         </p>
@@ -43,7 +44,7 @@ export default function Hero() {
           Contract Address
         </h2>
         <p
-          className="text-base md:text-base px-4 text-blue-500 underline cursor-pointer mt-2 animate__animated animate__fadeIn animate__delay-3s"
+          className="text-base md:text-base px-4 text-white underline cursor-pointer mt-2 animate__animated animate__fadeIn animate__delay-3s"
           onClick={copyToClipboard}
         >
           {contractAddress}
@@ -52,7 +53,7 @@ export default function Hero() {
           href={`https://solscan.io/token/${contractAddress}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="block mt-4 text-blue-500 underline animate__animated animate__fadeIn animate__delay-3s"
+          className="block mt-4 text-green-500 text-lg underline animate__animated animate__fadeIn animate__delay-3s"
         >
           View on Solscan
         </a>
@@ -65,13 +66,15 @@ export default function Hero() {
         </div>
       )}
 
-      <div className="absolute bottom-10 flex justify-center w-full">
-        <a
-          href="#about"
-          className="text-color-primary text-xl animate-bounce animate__animated animate__fadeIn animate__delay-4s"
-        >
-          ↓ Scroll Down
-        </a>
+      {/* Banner Image */}
+      <div className="absolute bottom-0 w-full">
+        <Image
+          src="/WebGallery/photos/BannerBeaver.png"
+          alt="Banner"
+          width={1920}
+          height={500}
+          className="object-cover md:h-[25vh] h-[25vh] animate__animated animate__fadeIn animate__delay-4s"
+        />
       </div>
     </div>
   );

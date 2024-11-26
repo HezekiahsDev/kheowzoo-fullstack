@@ -7,7 +7,7 @@ export default function Contact() {
   >("faq");
 
   return (
-    <section className="py-8" id="contact">
+    <section className="w-full py-8" id="contact">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center mb-12 text-color-primary">
           Contact Us

@@ -30,10 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-inter`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-inter overflow-x-hidden`}
       >
         <Header />
-        <main>{children}</main>
+        <main className="">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
