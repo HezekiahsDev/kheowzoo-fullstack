@@ -10,31 +10,47 @@ import Contact from "./components/Contact";
 export default function Home() {
   return (
     <>
-      <main className="w-full">
-        {/* Hero Section */}
-        <section id="home" className="scroll-mt-24">
+      {/* Hero Section */}
+      <section id="home" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-lg">
           <Hero />
-        </section>
+        </div>
+      </section>
 
-        {/* Featured Section */}
-        <section id="featured" className="scroll-mt-24">
+      {/* Featured Section */}
+      <section id="featured" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-lg">
           <Featured />
-        </section>
+        </div>
+      </section>
 
-        <section id="gallery" className="scroll-mt-24">
+      {/* Gallery Section */}
+      <section id="gallery" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-lg">
           <Gallery />
-        </section>
-        <section id="events" className="scroll-mt-24">
+        </div>
+      </section>
+
+      {/* Events Section */}
+      <section id="events" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-lg">
           <Events />
-        </section>
-        <section id="about" className="scroll-mt-24">
+        </div>
+      </section>
+
+      {/* About Kheowzoo Section */}
+      <section id="about" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-lg">
           <AboutKheowzoo />
-        </section>
-        <section id="contact" className="scroll-mt-24">
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-lg">
           <Contact />
-        </section>
-        {/* Add more sections as needed, keeping the scroll-mt class for consistent scrolling behavior */}
-      </main>
+        </div>
+      </section>
     </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
+//import Image from "next/image";
 import Link from "next/link";
 
 type EventItem = {
@@ -85,7 +85,7 @@ const data: TabData = {
       id: 1,
       title: "Coin Gecko",
       description: "Live updates from Coin Gecko.",
-      link: "https://www.geckoterminal.com/solana/pools/5tCgQ8g9t7YxupJMmQBYTdXq6fJ8KbwFMrvAhfb9thG?utm_source=coingecko&utm_medium=referral&utm_campaign=searchresults",
+      link: "https://www.geckoterminal.com/solana/pools/5tCgQ8g9t7YxupJMmQBYTdXq6fJ8KbwFMrvAhfb9thG",
     },
     {
       id: 2,
@@ -103,9 +103,7 @@ const data: TabData = {
 };
 
 export default function EventsAndNews() {
-  const [activeTab, setActiveTab] = useState<"news" | "events" | "analytics">(
-    "news"
-  );
+  const [activeTab, setActiveTab] = useState<"news" | "events" | "analytics">("news");
 
   return (
     <section className="py-8 bg-black" id="events">
@@ -133,44 +131,51 @@ export default function EventsAndNews() {
 
         {/* Tab Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data[activeTab].slice(0, 3).map((item, index) => (
+          {data[activeTab].slice(0, 3).map((item) => (
             <div
-              key={index}
-              className="bg-[#964B00] shadow-lg rounded-lg overflow-hidden border border-gray-200 transform transition-all hover:scale-105"
+              key={item.id}
+              className="bg-[#964B01] shadow-lg rounded-lg overflow-hidden border border-gray-200 transform transition-all hover:scale-105"
             >
-              {/* Conditionally render Image for events and news only */}
-              {activeTab !== "analytics" && item.image && (
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={400}
-                  height={300}
-                  className="w-full h-52 object-cover rounded-t-lg"
-                />
-              )}
-              <div className="p-4">
-                <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm text-gray-200">{item.description}</p>
-                <div className="mt-4 text-center">
-                  <Link href={item.link} passHref>
-                    <button className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-400 transition-all">
-                      {activeTab === "events" ? "RSVP" : "Read More"}
-                    </button>
-                  </Link>
+              {/* Render iframe for specific analytics items */}
+              {activeTab === "analytics" && item.id === 3 && (
+                <div className="flex justify-center p-4">
+                  <iframe
+                    id="dextools-widget"
+                    title="DEXTools Trading Chart"
+                    width="400"
+                    height="200"
+                    src="https://www.dextools.io/widget-chart/en/solana/pe-light/5tCgQ8g9t7YxupJMmQBYTdXq6fJ8KbwFMrvAhfb9thG?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
+                  ></iframe>
                 </div>
-              </div>
+              )}
+              {activeTab === "analytics" && item.id === 2 && (
+                <div className="flex justify-center p-4">
+                  <iframe
+                    id="dextswap-aggregator-widget"
+                    title="DEXTswap Aggregator"
+                    width="400"
+                    height="200"
+                    src="https://www.dextools.io/widget-aggregator/en/swap/solana/AiQcnL5gPjEXVH1E1FGUdN1WhPz4qXAZfQJxpGrJpump"
+                  ></iframe>
+                </div>
+              )}
+
+              {/* Render other analytics items */}
+              {(activeTab !== "analytics" || (item.id !== 2 && item.id !== 3)) && (
+                <div className="p-4">
+                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm text-gray-200">{item.description}</p>
+                  <div className="mt-4 text-center">
+                    <Link href={item.link} passHref>
+                      <button className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-400 transition-all">
+                        Read More
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
-        </div>
-
-        {/* "View More" Link */}
-        <div className="mt-6 text-center">
-          <Link
-            href={`/${activeTab}`}
-            className="text-green-400 hover:underline"
-          >
-            View Analytics
-          </Link>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import "animate.css";
 
 export default function Hero() {
@@ -13,7 +14,7 @@ export default function Hero() {
 
   return (
     <div
-      className="hero-section bg-cover bg-center text-white flex flex-col justify-center items-center h-[100vh] md:h-[100vh] relative"
+      className="hero-section bg-cover bg-center text-white flex flex-col justify-center items-center h-[100vh] relative"
       style={{ backgroundImage: `url('/bg-banner.jpg')` }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
@@ -26,16 +27,9 @@ export default function Hero() {
           Explore the cutting edge of blockchain-powered conservation. Join a
           community redefining the future of wildlife and Web3 technology.
         </p>
-
-        {/* <a
-          href="#featured"
-          className="inline-block bg-color-primary text-color-bg py-3 px-8 rounded-lg text-lg hover:bg-opacity-90 transition transform hover:scale-105 animate__animated animate__fadeIn animate__delay-3s"
-        >
-          Explore More
-        </a> */}
       </div>
 
-      <div className="z-10 mx-4 px-4 max-w-4xl  text-center mt-8">
+      <div className="z-10 mx-4 px-4 max-w-4xl text-center mt-8">
         <h2 className="text-lg md:text-xl font-bold text-color-primary animate__animated animate__fadeIn animate__delay-3s">
           Contract Address
         </h2>
@@ -62,13 +56,15 @@ export default function Hero() {
         </div>
       )}
 
-      <div className="absolute bottom-10 flex justify-center w-full">
-        <a
-          href="#about"
-          className="text-color-primary text-xl animate-bounce animate__animated animate__fadeIn animate__delay-4s"
-        >
-          ↓ Scroll Down
-        </a>
+      {/* Banner Image */}
+      <div className="absolute bottom-0 w-full">
+        <Image
+          src="/WebGallery/photos/BannerBeaver.png"
+          alt="Banner"
+          width={1920}
+          height={500}
+          className="object-cover md:h-[25vh] h-[25vh] animate__animated animate__fadeIn animate__delay-4s"
+        />
       </div>
     </div>
   );

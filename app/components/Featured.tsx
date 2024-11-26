@@ -20,25 +20,26 @@ interface Tweet {
   attachments?: {
     media_keys?: string[];
   };
+  media?: { url: string }[];
 }
 
 const blogPosts: BlogPost[] = [
   {
     id: 1,
     title: "Exploring Blockchain in Conservation",
-    image: "/WebGallery/photos/img40.jpg", // Local image for blog post 1
+    image: "/WebGallery/photos/img40.jpg",
     link: "/blog/blockchain-conservation",
   },
   {
     id: 2,
     title: "Technology Trends for Wildlife Protection",
-    image: "/WebGallery/photos/img38.jpg", // Local image for blog post 2
+    image: "/WebGallery/photos/img38.jpg",
     link: "/blog/tech-trends-wildlife",
   },
   {
     id: 3,
     title: "Community Contributions to Conservation",
-    image: "/WebGallery/photos/img29.jpg", // Local image for blog post 3
+    image: "/WebGallery/photos/img29.jpg",
     link: "/blog/community-conservation",
   },
 ];
@@ -59,29 +60,44 @@ const videoLinks = [
 ];
 
 export default function Featured() {
-  const [activeTab, setActiveTab] = useState<"tweets" | "blog" | "watch">(
-    "tweets"
-  );
+  const [activeTab, setActiveTab] = useState<"tweets" | "blog" | "watch">("tweets");
   const [tweets, setTweets] = useState<Tweet[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
   });
 
-  const fetchTweets = async (username: string): Promise<Tweet[]> => {
-    const response = await fetch(`/api/twitter?username=${username}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch tweets");
+  const fetchTweets = async (username: string): Promise<void> => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`/api/twitter?username=${username}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch tweets");
+      }
+      const data = await response.json();
+      const tweetsData = data.data.map((tweet: Tweet) => ({
+        ...tweet,
+        media: data.includes?.media || [],
+      }));
+      setTweets(tweetsData);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setLoading(false);
     }
-    return response.json();
+  };
+
+  const handleRefresh = () => {
+    fetchTweets("kheowzooFROMSOL");
   };
 
   useEffect(() => {
     if (activeTab === "tweets") {
-      fetchTweets("kheowzoo_CTO")
-        .then((data) => setTweets(data))
-        .catch((err) => console.error(err));
+      fetchTweets("kheowzooFROMSOL");
     }
   }, [activeTab]);
 
@@ -116,47 +132,64 @@ export default function Featured() {
             transition: { duration: 1.2 },
           }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="justify-center items-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeTab === "tweets" &&
-              tweets.slice(0, 3).map((tweet) => (
-                <div
-                  key={tweet.id}
-                  className="bg-[#8B5C29] shadow-lg rounded-lg p-4 flex flex-col"
-                >
-                  <h3 className="text-lg font-bold text-white mb-2">
-                    {tweet.text}
-                  </h3>
-                  {tweet.attachments?.media_keys && (
-                    <Image
-                      src={`https://via.placeholder.com/400x300`}
-                      alt="Tweet Media"
-                      width={400}
-                      height={300}
-                      className="mb-4"
-                    />
-                  )}
-                  <Link
-                    href={`https://twitter.com/kheowzoo_CTO/status/${tweet.id}`}
-                    target="_blank"
-                    className="bg-color-primary text-white py-2 px-4 rounded-md hover:bg-opacity-80 transition-all text-center"
+              (loading ? (
+                <p className="text-center justify-center text-color-primary">Loading tweets...</p>
+              ) : error ? (
+                <div className="text-center">
+                  <p className="text-red-500">{error}</p>
+                  <button
+                    onClick={handleRefresh}
+                    className="mt-4 bg-color-primary text-white py-2 px-4 rounded-md hover:bg-opacity-80 transition-all"
                   >
-                    View on Twitter
-                  </Link>
+                    Refresh
+                  </button>
                 </div>
+              ) : tweets.length > 0 ? (
+                tweets.slice(0, 3).map((tweet) => (
+                  <div
+                    key={tweet.id}
+                    className="bg-[#121212] shadow-lg rounded-lg p-4 flex flex-col"
+                  >
+                    <p className="text-white text-md mb-4">{tweet.text}</p>
+                    {tweet.media &&
+                      tweet.media.map((media, index) => (
+                        <Image
+                          key={index}
+                          src={media.url}
+                          alt="Tweet Media"
+                          width={400}
+                          height={300}
+                          className="mb-4 rounded"
+                        />
+                      ))}
+                    <Link
+                      href={`https://twitter.com/kheowzooFROMSOL/status/${tweet.id}`}
+                      target="_blank"
+                      className="bg-color-primary text-white py-2 px-4 rounded-md hover:bg-opacity-80 transition-all text-center"
+                    >
+                      View on Twitter
+                    </Link>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-gray-500">No tweets found.</p>
               ))}
 
+            {/* Blog and Watch tabs remain unchanged */}
             {activeTab === "blog" &&
               blogPosts.map((post) => (
                 <div
                   key={post.id}
-                  className="bg-[#8B5C29] shadow-lg rounded-lg p-4 flex flex-col"
+                  className="bg-[#8B5C29] h-full justify-center items-center shadow-lg rounded-lg p-4 flex flex-col"
                 >
                   <Image
                     src={post.image}
                     alt={post.title}
-                    width={320}
-                    height={240}
-                    className="mb-4 rounded"
+                    width={300}
+                    height={200}
+                    className="mb-4 w-[300px] h-[200px] rounded"
                   />
                   <h3 className="text-lg font-bold text-white mb-2">
                     {post.title}
@@ -174,53 +207,20 @@ export default function Featured() {
               videoLinks.map((video, index) => (
                 <div
                   key={index}
-                  className="bg-[#8B5C29] shadow-lg rounded-lg p-4 flex flex-col"
+                  className="bg-[#8B5C29] h-full shadow-lg rounded-lg p-4 flex flex-col"
                 >
                   <div className="aspect-w-16 aspect-h-9 mb-4">
                     <iframe
                       src={video.url + (index === 0 ? "&autoplay=1" : "")}
-                      title={`YouTube Video ${index + 1}`}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      title={`Video ${index + 1}`}
+                      frameBorder="0"
                       allowFullScreen
-                      className="rounded-lg w-full h-full"
+                      className="w-full h-[200PX] rounded"
                     ></iframe>
                   </div>
-
-                  <h3 className="text-lg font-bold text-white mb-2">
-                    {video.description}
-                  </h3>
+                  <p className="text-sm text-white">{video.description}</p>
                 </div>
               ))}
-          </div>
-
-          {/* Tab-Specific Links */}
-          <div className="mt-8 flex justify-center">
-            {activeTab === "tweets" && (
-              <Link
-                href="https://twitter.com/kheowzoo_CTO"
-                target="_blank"
-                className="text-color-primary font-semibold text-lg transition-all cursor-pointer"
-              >
-                Visit our Twitter page
-              </Link>
-            )}
-            {activeTab === "blog" && (
-              <Link
-                href="/blog"
-                className="text-color-primary font-semibold text-lg transition-all cursor-pointer"
-              >
-                Visit our Blog
-              </Link>
-            )}
-            {activeTab === "watch" && (
-              <Link
-                href="https://youtube.com/channel/your_channel"
-                target="_blank"
-                className="text-color-primary font-semibold text-lg transition-all cursor-pointer"
-              >
-                Visit our YouTube Channel
-              </Link>
-            )}
           </div>
         </motion.div>
       </div>
