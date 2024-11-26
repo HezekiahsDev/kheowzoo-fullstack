@@ -17,7 +17,17 @@ export default function Hero() {
       style={{ backgroundImage: `url('/bg-banner.jpg')` }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
-      <div className="z-10 px-4 max-w-4xl text-center">
+
+      {/* Image Banner */}
+      <div className="z-20 w-full">
+        <img
+          src="/WebGallery/photos/BannerVeaver.jpg"
+          alt="Banner"
+          className="w-full object-cover animate__animated animate__fadeInDown"
+        />
+      </div>
+
+      <div className="z-10 px-4 max-w-4xl text-center mt-4">
         <h1 className="text-3xl md:text-6xl font-bold mb-6 animate__animated animate__fadeIn animate__delay-1s">
           Welcome to Kheowzoo
         </h1>
@@ -26,16 +36,9 @@ export default function Hero() {
           Explore the cutting edge of blockchain-powered conservation. Join a
           community redefining the future of wildlife and Web3 technology.
         </p>
-
-        {/* <a
-          href="#featured"
-          className="inline-block bg-color-primary text-color-bg py-3 px-8 rounded-lg text-lg hover:bg-opacity-90 transition transform hover:scale-105 animate__animated animate__fadeIn animate__delay-3s"
-        >
-          Explore More
-        </a> */}
       </div>
 
-      <div className="z-10 mx-4 px-4 max-w-4xl  text-center mt-8">
+      <div className="z-10 mx-4 px-4 max-w-4xl text-center mt-8">
         <h2 className="text-lg md:text-xl font-bold text-color-primary animate__animated animate__fadeIn animate__delay-3s">
           Contract Address
         </h2>
