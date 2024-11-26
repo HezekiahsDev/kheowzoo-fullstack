@@ -11,45 +11,26 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section id="home" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-lg">
-          <Hero />
-        </div>
+      <section id="home" className="scroll-mt-24">
+        <Hero />
       </section>
 
       {/* Featured Section */}
-      <section id="featured" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-lg">
-          <Featured />
-        </div>
+      <section id="featured" className="scroll-mt-24">
+        <Featured />
       </section>
 
-      {/* Gallery Section */}
-      <section id="gallery" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-lg">
-          <Gallery />
-        </div>
+      <section id="gallery" className="scroll-mt-24">
+        <Gallery />
       </section>
-
-      {/* Events Section */}
-      <section id="events" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-lg">
-          <Events />
-        </div>
+      <section id="events" className="scroll-mt-24">
+        <Events />
       </section>
-
-      {/* About Kheowzoo Section */}
-      <section id="about" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-lg">
-          <AboutKheowzoo />
-        </div>
+      <section id="about" className="scroll-mt-24">
+        <AboutKheowzoo />
       </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="scroll-mt-24 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-screen-lg">
-          <Contact />
-        </div>
+      <section id="contact" className="scroll-mt-24">
+        <Contact />
       </section>
     </>
   );
