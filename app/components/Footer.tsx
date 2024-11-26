@@ -23,7 +23,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, label, Icon }) => (
 
 export default function Footer() {
   return (
-    <footer className="bg-black mt-12 py-8 border-t border-color-border">
+    <footer className="bg-black w-full mt-12 py-8 border-t border-color-border">
       <div className="max-w-7xl mx-auto px-6 text-color-text flex flex-col md:flex-row justify-between items-center">
         {/* Logo and Description */}
         <div className="mb-4 md:mb-0 text-center md:text-left">

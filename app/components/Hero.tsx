@@ -14,7 +14,7 @@ export default function Hero() {
 
   return (
     <div
-      className="hero-section bg-cover bg-center text-white flex flex-col justify-center items-center h-[100vh] relative"
+      className="hero-section bg-cover bg-center text-white flex flex-col justify-center items-center h-[100vh] relative w-full"
       style={{ backgroundImage: `url('/bg-banner.jpg')` }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
@@ -23,7 +23,7 @@ export default function Hero() {
           Welcome to Kheowzoo
         </h1>
 
-        <p className="text-lg md:text-xl mb-6 animate__animated animate__fadeIn animate__delay-2s">
+        <p className="text-lg md:text-xl mb-2 animate__animated animate__fadeIn animate__delay-2s">
           Explore the cutting edge of blockchain-powered conservation. Join a
           community redefining the future of wildlife and Web3 technology.
         </p>
