@@ -60,7 +60,7 @@ export default function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6 text-color-text">
+        <nav className="hidden md:flex space-x-6 text-color-text hover:text-color-primary">
           {["home", "featured", "gallery", "events", "about", "contact"].map(
             (section) => (
               <a
